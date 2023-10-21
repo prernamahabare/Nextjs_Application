@@ -5,15 +5,19 @@ import { getDataFromToken } from "@/helpers/getDataFromToken";
 
 connect();
 
-export async function PUT(request:NextRequest){
+export async function PUT(request: NextRequest,{params}:any){
     try {
         // const user = await User.findOne();
 
+        const userid =  params._id;
+        const user = await User.findOne({userid});
+        console.log(user);
+
         const reqbody = await request.json();
-        const {username,email, password} = reqbody;
+        const {username, email} = reqbody;
 
         const userId = await getDataFromToken(request);
-        const user = await User.findOne({_id: userId });
+        // const user = await User.findOne({_id: userId });
 
         if (!user) {
             return NextResponse.json({ error: "User does not exist" },
@@ -23,7 +27,6 @@ export async function PUT(request:NextRequest){
         const result = await User.findByIdAndUpdate({ _id: userId }, { $set : {
             username: username,
             email: email,
-            password: password
         } });
 
         return NextResponse.json({

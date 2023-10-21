@@ -18,9 +18,7 @@ export default function VerifyEmailPage() {
         } catch (error:any) {
             setError(true);
             console.log(error.reponse.data);
-            
         }
-
     }
 
     useEffect(() => {
