@@ -1,6 +1,8 @@
 import { connect } from "@/dbconfig/dbconfig";
 import User from "@/modules/userModule";
 import { NextRequest, NextResponse } from "next/server";
+import { sendEmail } from "@/helpers/mailer";
+
 
 connect();
 
@@ -8,26 +10,22 @@ export async function POST(request: NextRequest) {
 
     try {
         const reqBody = await request.json()
-        const { token } = reqBody
-        console.log(token);
+        const { email } = reqBody
+        console.log(email);
 
         const user = await User.findOne({
-            forgotpasswordToken: token,
-            forgotpasswordTokenExpiry: { $gt: Date.now() }
+            email: email
         });
 
         if (!user) {
-            return NextResponse.json({ error: "Invalid token" }, { status: 400 })
+            return NextResponse.json({ error: "User Not Exits" }, { status: 400 })
         }
         console.log(user);
 
-        user.password = true;
-        user.verifyToken = undefined;
-        user.verifyTokenExpiry = undefined;
-        await user.save();
+        await sendEmail({email, emailType:"RESET", userId: user._id})
 
         return NextResponse.json({
-            message: "Email verified successfully",
+            message: "To reset password, check your Email",
             success: true
         })
 

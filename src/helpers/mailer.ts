@@ -13,7 +13,7 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
                 { verifyToken: hashedToken, verifyTokenExpiry: Date.now() + 3600000 })
         } else if (emailType === "RESET") {
             await User.findByIdAndUpdate(userId,
-                { forgotPasswordToken: hashedToken, forgotPasswordTokenExpiry: Date.now() + 3600000 })
+                {  forgotpasswordToken: hashedToken, forgotpasswordTokenExpiry: Date.now() + 3600000 })
         }
 
         var transport = nodemailer.createTransport({
@@ -29,11 +29,29 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
         const mailOptions = {
             from: 'hitesh@gmail.com',
             to: email,
-            subject: emailType === "VERIFY" ? "Verify your email" : "Reset your password",
-            html: `<p>Click <a href="${process.env.DOMAIN}/verifyemail?token=${hashedToken}">here</a> to ${emailType === "VERIFY" ? "verify your email" : "reset your password"}
-            or copy and paste the link below in your browser. <br> ${process.env.DOMAIN}/verifyemail?token=${hashedToken}
-            </p>`
-        }
+            subject: emailType === "VERIFY"
+                ? "Verify your Email"
+                : "Reset your password",
+            html: emailType === "VERIFY" ?
+                    `<p>Click <a href="${process.env.DOMAIN
+                        }/verifyemail?token=${hashedToken}">here</a> to ${emailType === "RESET"
+                            ? "reset your password"
+                            : "verify your email"
+                        }
+                    or copy and paste the link below in your browser. <br> ${process.env.DOMAIN
+                        }/verifyemail?token=${hashedToken}
+                    </p>`
+                : 
+                `<p>Click <a href="${process.env.DOMAIN
+                }/resetpassword?token=${hashedToken}">here</a> to ${emailType === "RESET"
+                    ? "reset your password"
+                    : "verify your email"
+                }
+                  or copy and paste the link below in your browser. <br> ${process.env.DOMAIN}/resetpassword?token=${hashedToken}
+                  </p>`
+        };
+
+        // "VERIFY" ? "Verify your email" : "Reset your password"
 
         const mailresponse = await transport.sendMail
             (mailOptions);
