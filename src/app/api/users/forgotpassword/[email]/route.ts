@@ -2,7 +2,7 @@ import { connect } from "@/dbconfig/dbconfig";
 import User from "@/modules/userModule";
 import { NextRequest, NextResponse } from "next/server";
 import { sendEmail } from "@/helpers/mailer";
-
+import { EmailTypes } from "@/enums/emailTypes";
 
 connect();
 
@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
         }
         console.log(user);
 
-        await sendEmail({email, emailType:"RESET", userId: user._id})
+        await sendEmail({email, emailType:EmailTypes.RESET, userId: user._id})
 
         return NextResponse.json({
             message: "To reset password, check your Email",

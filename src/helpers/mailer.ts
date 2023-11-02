@@ -1,6 +1,7 @@
 import nodemailer from 'nodemailer';
 import User from "@/modules/userModule";
 import bcryptjs from 'bcryptjs';
+import {EmailTypes} from '../enums/emailTypes'
 
 
 export const sendEmail = async ({ email, emailType, userId }: any) => {
@@ -8,40 +9,50 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
         // create a hased token
         const hashedToken = await bcryptjs.hash(userId.toString(), 10)
 
-        if (emailType === "VERIFY") {
+        if (emailType === EmailTypes.VERIFY) {
             await User.findByIdAndUpdate(userId,
                 { verifyToken: hashedToken, verifyTokenExpiry: Date.now() + 3600000 })
-        } else if (emailType === "RESET") {
+        } else if (emailType === EmailTypes.RESET) {
             await User.findByIdAndUpdate(userId,
-                {  forgotpasswordToken: hashedToken, forgotpasswordTokenExpiry: Date.now() + 3600000 })
+                { forgotpasswordToken: hashedToken, forgotpasswordTokenExpiry: Date.now() + 3600000 })
         }
 
+        //  Mail send using Gmail
+        // const transport = nodemailer.createTransport({
+        //     service: "gmail",
+        //     auth: {
+        //         user: process.env.MAILSERVICE_USER,
+        //         pass: process.env.MAILSERVICE_PASS,
+        //     },
+        // });
+
+        //  Mail send using MailTrap
         var transport = nodemailer.createTransport({
             host: "sandbox.smtp.mailtrap.io",
             port: 2525, auth:
             {
-                user: "df91f4fbda9a67",
-                pass: "bc7c825a9f2462"
+                user: process.env.MAILSERVICE_USER,
+                pass: process.env.MAILSERVICE_PASS,
             }
         });
 
 
         const mailOptions = {
-            from: 'hitesh@gmail.com',
+            from: process.env.MAIL_FROM,
             to: email,
-            subject: emailType === "VERIFY"
+            subject: emailType === EmailTypes.VERIFY
                 ? "Verify your Email"
                 : "Reset your password",
-            html: emailType === "VERIFY" ?
-                    `<p>Click <a href="${process.env.DOMAIN
-                        }/verifyemail?token=${hashedToken}">here</a> to ${emailType === "RESET"
-                            ? "reset your password"
-                            : "verify your email"
-                        }
+            html: emailType === EmailTypes.VERIFY ?
+                `<p>Click <a href="${process.env.DOMAIN
+                }/verifyemail?token=${hashedToken}">here</a> to ${emailType === "RESET"
+                    ? "reset your password"
+                    : "verify your email"
+                }
                     or copy and paste the link below in your browser. <br> ${process.env.DOMAIN
-                        }/verifyemail?token=${hashedToken}
+                }/verifyemail?token=${hashedToken}
                     </p>`
-                : 
+                :
                 `<p>Click <a href="${process.env.DOMAIN
                 }/resetpassword?token=${hashedToken}">here</a> to ${emailType === "RESET"
                     ? "reset your password"
@@ -50,8 +61,6 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
                   or copy and paste the link below in your browser. <br> ${process.env.DOMAIN}/resetpassword?token=${hashedToken}
                   </p>`
         };
-
-        // "VERIFY" ? "Verify your email" : "Reset your password"
 
         const mailresponse = await transport.sendMail
             (mailOptions);
