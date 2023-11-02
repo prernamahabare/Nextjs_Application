@@ -8,7 +8,6 @@ export async function DELETE(request: NextRequest,{params}:{params:{username:str
     try {
         const username =  params.username;
         const user = await User.findOne({username});
-        console.log(user);
 
         if (!user) {
             return NextResponse.json({ error: "User does not exist" },

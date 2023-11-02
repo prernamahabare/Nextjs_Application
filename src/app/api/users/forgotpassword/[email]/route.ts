@@ -11,7 +11,6 @@ export async function POST(request: NextRequest) {
     try {
         const reqBody = await request.json()
         const { email } = reqBody
-        console.log(email);
 
         const user = await User.findOne({
             email: email
@@ -20,7 +19,6 @@ export async function POST(request: NextRequest) {
         if (!user) {
             return NextResponse.json({ error: "User Not Exits" }, { status: 400 })
         }
-        console.log(user);
 
         await sendEmail({email, emailType:EmailTypes.RESET, userId: user._id})
 

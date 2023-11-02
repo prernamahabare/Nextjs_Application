@@ -16,10 +16,8 @@ export default function resetpasswordpage() {
     const onChangepassword = async () => {
         try {
             const response = await axios.post("api/users/resetpassword", user);
-            console.log("change password Sucessfully", response.data);
         } catch (error: any) {
             toast.error(error.message);
-            console.log("Unable to change password ", error.message);
         }
 
     };

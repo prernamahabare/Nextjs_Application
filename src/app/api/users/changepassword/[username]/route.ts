@@ -11,7 +11,6 @@ export async function PUT(request: NextRequest, { params }: any) {
 
         const username = params.username;
         const user = await User.findOne({ username });
-        console.log(user);
 
         if (!user) {
             return NextResponse.json({ error: "User does not exist" },

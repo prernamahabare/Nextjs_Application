@@ -13,10 +13,8 @@ export default function profilePage() {
     const logout = async () => {
         try {
             axios.get("api/users/logout");
-            console.log("Logout Successfully");
             router.push('/login')
         } catch (error: any) {
-           console.log( error.message);
            toast(error.message);
         }
 
@@ -24,9 +22,7 @@ export default function profilePage() {
 
     const getUserDetails = async ()=>{
         const res = await axios.get('/api/users/me');
-        console.log(res.data);
         setData(res.data.data._id);
-
     }
     
     return (

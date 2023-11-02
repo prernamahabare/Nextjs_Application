@@ -11,7 +11,6 @@ export async function PUT(request: NextRequest,{params}:any){
 
         const userid =  params._id;
         const user = await User.findOne({userid});
-        console.log(user);
 
         const reqbody = await request.json();
         const {username, email} = reqbody;
