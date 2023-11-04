@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import Navbar from "../components/Navbar";
 
 export default function profilePage() {
     const router = useRouter();
@@ -27,6 +28,7 @@ export default function profilePage() {
     
     return (
         <>
+        <Navbar/>
             <div className="flex items-center min-h-screen flex-col justify-center py-2">
                 <h1>profile</h1>
                 <p>Profile page</p>
