@@ -10,12 +10,13 @@ export async function POST(request: NextRequest) {
 
     try {
         const reqBody = await request.json()
-        const { email } = reqBody
+        const { email }= reqBody
 
         const user = await User.findOne({
             email: email
         });
 
+        console.log(email);
         if (!user) {
             return NextResponse.json({ error: "User Not Exits" }, { status: 400 })
         }

@@ -20,7 +20,7 @@ export default function LoginPage() {
         try {
             setLoading(true);
             const response = await axios.post("api/users/login", user);
-            router.push("/profile")
+            router.push("/users")
         } catch (error: any) {
             toast.error(error.message);
         } finally {
@@ -62,7 +62,7 @@ export default function LoginPage() {
                 >{buttonDisabled ? "No Login" : "Login"}</button>
 
                 <h2 className="text-center flex justify-center gap-9">
-                    <Link href="/resetpassword">Forgot Password?</Link>
+                    <Link href="/forgotpassword">Forgot Password?</Link>
                     <span className="text-slate-400">|</span>
                     <Link href="/signup">Sign Up</Link>
                 </h2>

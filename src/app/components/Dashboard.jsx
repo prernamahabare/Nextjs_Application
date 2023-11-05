@@ -7,7 +7,7 @@ const Dashboard = () => {
             <div className='basis-1/2  m-auto justify-center'>
                 <h1 className='text-6xl'>
                     Build like a team of hundreds
-                    <span class="text-xs bg-[#fd386e] text-[#fd386e]">________</span>
+                    <span className="text-xs bg-[#fd386e] text-[#fd386e]">________</span>
                 </h1>
             </div>
             <div className='basis-1/2 text-lg  m-auto justify-center'>
