@@ -81,39 +81,5 @@ export default function SignupPage() {
 
 
         </div>
-        // <div className="w-full max-w-xs mx-auto">
-        //     <h1>{loading ? "Processing" : "Signup"}</h1>
-        //     <hr />
-        //     <label htmlFor="username" className="block text-sm font-medium leading-6">Username</label>
-        //     <div className="mt-2">
-        //         <input className="block w-full text-gray-900 py-1.5 placeholder:text-gray-400 px-1.5 rounded-md"
-        //             type="text" id="username"
-        //             value={user.username}
-        //             onChange={(e) => setUser({ ...user, username: e.target.value })}
-        //             placeholder="Username" />
-        //     </div>
-
-        // <label htmlFor="email" className="block text-sm font-medium leading-6 ">email</label>
-        // <div className="mt-2">
-        //     <input className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-        //         type="email" id="email"
-        //         value={user.email}
-        //         onChange={(e) => setUser({ ...user, email: e.target.value })}
-        //         placeholder="email" />
-        // </div>
-
-        // <label htmlFor="password" className="block text-sm font-medium leading-6 ">password</label>
-        // <input className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-        //     type="password" id="password"
-        //     value={user.password}
-        //     onChange={(e) => setUser({ ...user, password: e.target.value })}
-        //     placeholder="password" />
-
-        // <button onClick={onSignup}
-        //     className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        // >{buttonDisabled ? "No Signup" : "Signup"}</button>
-        // <Link href="/login">Visit Login page</Link>
-        // </div>
-
     )
 }
