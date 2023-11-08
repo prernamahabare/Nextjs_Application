@@ -10,7 +10,7 @@ connect();
 export async function POST(request: NextRequest) {
     try {
         const reqBody = await request.json();
-        const { username, email, password } = reqBody;
+        const { name, username, email, password } = reqBody;
 
         // check if user is already exist
         const user = await User.findOne({ email });
@@ -25,12 +25,14 @@ export async function POST(request: NextRequest) {
         const hashPassword = await bcryptjs.hash(password, salt);
 
         const newUser = new User({
+            name,
             username,
             email,
             password: hashPassword,
         })
 
         const savedUser = await newUser.save();
+        // console.log(savedUser)
 
         await sendEmail({email, emailType:EmailTypes.VERIFY, userId: savedUser._id})
 

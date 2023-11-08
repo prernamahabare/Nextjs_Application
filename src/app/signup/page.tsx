@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 export default function SignupPage() {
     const router = useRouter();
     const [user, setUser] = React.useState({
+        name:"",
         username: "",
         email: "",
         password: ""
@@ -21,6 +22,7 @@ export default function SignupPage() {
         try {
             setLoading(true);
             const response = await axios.post("api/users/signup", user);
+            console.log(user);
             router.push("/login");
 
         } catch (error: any) {
@@ -43,6 +45,14 @@ export default function SignupPage() {
         <div className="h-screen w-full flex items-center justify-center">
             <div className="flex flex-col gap-y-2 w-1/3">
                 <h1 className="text-center text-3xl">{loading ? "Processing" : "Signup"}</h1>
+                <div className="flex flex-col gap-y-2">
+                    <label htmlFor="name" className="text-base">Name</label>
+                    <input className="w-full p-3 border border-[#424248] outline-none rounded-md bg-[#18181b] placeholder:text-[#65656a] text-sm hover:bg-gray-900 "
+                        type="text" id="name"
+                        value={user.name}
+                        onChange={(e) => setUser({ ...user, name: e.target.value })}
+                        placeholder="Name" />
+                </div>
                 <div className="flex flex-col gap-y-2">
                     <label htmlFor="username" className="text-base">Username</label>
                     <input className="w-full p-3 border border-[#424248] outline-none rounded-md bg-[#18181b] placeholder:text-[#65656a] text-sm hover:bg-gray-900 "

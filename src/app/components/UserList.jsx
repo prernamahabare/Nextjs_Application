@@ -30,6 +30,7 @@ const UserList = () => {
               <thead className="border-b font-medium dark:border-neutral-500">
                 <tr>
                   <th scope="col" className="px-6 py-4">NAME</th>
+                  <th scope="col" className="px-6 py-4">USERNAME</th>
                   <th scope="col" className="px-6 py-4">IDENTIFIERS</th>
                   <th scope="col" className="px-6 py-4">STATUS</th>
                   <th scope="col" className="px-6 py-4">ID</th>
@@ -39,6 +40,7 @@ const UserList = () => {
                 {data && data.map((item) => (
                   // eslint-disable-next-line react/jsx-key
                   <tr className="border-b dark:border-neutral-500                    transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
+                    <td className="whitespace-nowrap px-6 py-4 font-medium">{item.name}</td>
                     <td className="whitespace-nowrap px-6 py-4 font-medium">{item.username}</td>
                     <td className="whitespace-nowrap px-6 py-4">{item.email}</td>
                     <td className="whitespace-nowrap px-6 py-4 " ><h4 className='bg-gray-400 rounded-full p-2 text-center'>{item.isVerified ? "verified" : "Unverified"}</h4></td>

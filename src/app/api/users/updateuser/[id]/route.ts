@@ -13,7 +13,7 @@ export async function PUT(request: NextRequest,{params}:any){
         const user = await User.findOne({userid});
 
         const reqbody = await request.json();
-        const {username, email} = reqbody;
+        const {name, username, email} = reqbody;
 
         const userId = await getDataFromToken(request);
         // const user = await User.findOne({_id: userId });
@@ -24,6 +24,7 @@ export async function PUT(request: NextRequest,{params}:any){
         }
 
         const result = await User.findByIdAndUpdate({ _id: userId }, { $set : {
+            name: name,
             username: username,
             email: email,
         } });

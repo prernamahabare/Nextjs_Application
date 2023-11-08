@@ -44,7 +44,7 @@ const Usernav = () => {
                     <div><FeatherIcon icon="search" /></div>
                     <div className='flex gap-2'>
                     <div className='gap-0'><Link href={`/profile/${data}`}><FeatherIcon icon="user" /></Link></div>
-                    <div>{user.username}</div>
+                    <div>{user.name}</div>
                     </div>
                 </div>
             </div>
