@@ -5,12 +5,17 @@ import { getDataFromToken } from "@/helpers/getDataFromToken";
 
 connect();
 
-export async function PUT(request: NextRequest,{params}:any){
+export async function PUT(request: NextRequest,{params}:{params:{username:string}}){
     try {
         // const user = await User.findOne();
 
-        const userid =  params._id;
-        const user = await User.findOne({userid});
+        const user =  params.username;
+        // console.log(user)
+        const currentUser = await User.findOne({username:user});
+
+        // const username =  params.username;
+        // const user = await User.findOne({username});
+
 
         const reqbody = await request.json();
         const {name, username, email} = reqbody;
@@ -18,7 +23,7 @@ export async function PUT(request: NextRequest,{params}:any){
         const userId = await getDataFromToken(request);
         // const user = await User.findOne({_id: userId });
 
-        if (!user) {
+        if (!currentUser) {
             return NextResponse.json({ error: "User does not exist" },
                 { status: 400 });
         }
@@ -28,13 +33,12 @@ export async function PUT(request: NextRequest,{params}:any){
             username: username,
             email: email,
         } });
+        console.log(result)
 
         return NextResponse.json({
             message: "User Update Successfully",
             success: true
         })
-
-
     } catch (error: any) {
         return NextResponse.json(
             { error: error.message },

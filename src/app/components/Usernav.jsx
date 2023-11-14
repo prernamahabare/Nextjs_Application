@@ -18,13 +18,12 @@ const Usernav = () => {
 
     const getUserDetails = async () => {
         const res = await axios.get('/api/users/me');
-        // console.log(res?.data?.data)
         setData(res?.data?.data.username);
         sessionStorage.setItem("currentUser", JSON.stringify(res.data.data))
     }
     let user = JSON.parse(sessionStorage.getItem('currentUser') || '{}');
     // user = JSON.parse(user)
-    // console.log(user._id)
+    console.log(data)
 
     useEffect(() => {
         getUserDetails();
