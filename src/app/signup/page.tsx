@@ -52,7 +52,7 @@ export default function SignupPage() {
         <>
             <div><Toaster/></div>
             <div className="h-screen w-full flex items-center justify-center">
-                <div className="flex flex-col gap-y-2 w-1/3">
+                <div className="flex flex-col gap-y-4 w-1/3">
                     <h1 className="text-center text-3xl">{loading ? "Processing" : "Signup"}</h1>
                     <div className="flex flex-col gap-y-2">
                         <label htmlFor="name" className="text-base">Name</label>
@@ -89,7 +89,7 @@ export default function SignupPage() {
                             placeholder="Password" />
                     </div>
                     <button onClick={onSignup}
-                        className={`btn-lg px-3 py-3 leading-6 my-5 text-lg rounded-md  ${buttonDisabled ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#fd386e]'
+                        className={`btn-lg px-3 py-3 leading-6 my-5 text-lg rounded-md  ${buttonDisabled ? 'bg-[#d75d7f] cursor-not-allowed' : 'bg-[#fd386e]'
                             }`}>SignUp</button>
                     <h2 className="text-center">
                         <span>Already Have an account? </span>

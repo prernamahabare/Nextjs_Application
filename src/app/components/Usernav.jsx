@@ -3,31 +3,8 @@ import Link from 'next/link'
 import FeatherIcon from "feather-icons-react"
 import axios from "axios";
 
+const Usernav = ({user}) => {
 
-const Usernav = () => {
-    const [data, setData] = React.useState([])
-
-    const logout = async () => {
-        try {
-            axios.get("api/users/logout");
-            router.push('/login')
-        } catch (error) {
-            toast(error.message);
-        }
-    };
-
-    const getUserDetails = async () => {
-        const res = await axios.get('/api/users/me');
-        setData(res?.data?.data.username);
-        sessionStorage.setItem("currentUser", JSON.stringify(res.data.data))
-    }
-    let user = JSON.parse(sessionStorage.getItem('currentUser') || '{}');
-    // user = JSON.parse(user)
-    console.log(data)
-
-    useEffect(() => {
-        getUserDetails();
-    }, [])
     return (
         <>
             <div className='flex justify-between text-slate-100 py-4 px-7'>
@@ -42,8 +19,8 @@ const Usernav = () => {
                     <div>Support</div>
                     <div><FeatherIcon icon="search" /></div>
                     <div className='flex gap-2'>
-                    <div className='gap-0'><Link href={`/profile/${data}`}><FeatherIcon icon="user" /></Link></div>
-                    <div>{user.name}</div>
+                    <div className='gap-0'><Link href={`/profile/${user}`}><FeatherIcon icon="user" /></Link></div>
+                    <div>{user}</div>
                     </div>
                 </div>
             </div>
