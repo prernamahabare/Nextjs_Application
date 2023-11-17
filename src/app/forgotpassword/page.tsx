@@ -51,12 +51,13 @@ export default function forgotpasswordPage() {
                         value={user.email} onChange={(e) => setuser({ ...user, email: e.target.value })} />
                     <button onClick={onForgotPassword}
                         className={`btn-lg px-3 py-3 leading-6 my-5 text-lg rounded-md  ${buttonDisabled ? 'bg-[#d75d7f] cursor-not-allowed' : 'bg-[#fd386e]'}`}>Send Email</button>
-                </div>
-                <h2 className="text-center flex justify-center gap-9">
-                        <Link href="/forgotpassword">Forgot Password?</Link>
+                         <h2 className="text-center flex justify-center gap-9">
+                        <Link href="/login">Sign in</Link>
                             <span className="text-slate-400">|</span>
                             <Link href="/signup">Sign Up</Link>
                         </h2>
+                </div>
+               
             </div >
         </>
     )
