@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
         });
 
         if (!user) {
-            return NextResponse.json({ error: "User Not Exits" }, { status: 400 })
+            return NextResponse.json({ error: "User Not Exist" }, { status: 400 })
         }
 
         await sendEmail({email, emailType:EmailTypes.RESET, userId: user._id})

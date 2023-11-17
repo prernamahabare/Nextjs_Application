@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import toast,  { Toaster }  from "react-hot-toast";
+import Loading from "../Loading";
 
 export default function SignupPage() {
     const router = useRouter();
@@ -51,6 +52,9 @@ export default function SignupPage() {
     return (
         <>
             <div><Toaster/></div>
+            {loading ? (
+                <Loading />
+            ) : ("")}
             <div className="h-screen w-full flex items-center justify-center">
                 <div className="flex flex-col gap-y-4 w-1/3">
                     <h1 className="text-center text-3xl">{loading ? "Processing" : "Signup"}</h1>

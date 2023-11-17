@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react"
 import toast, { Toaster } from "react-hot-toast";
+import Loading from "../Loading";
 
 export default function forgotpasswordPage() {
     const router = useRouter();
@@ -12,11 +13,11 @@ export default function forgotpasswordPage() {
     const [user, setuser] = React.useState({
         email: ""
     });
-    console.log(user.email)
-
+    const [loading, setLoading] = React.useState(false);
 
     const onForgotPassword = async () => {
         try {
+            setLoading(true);
             const response = await axios.post("/api/users/forgotpassword", user);
             toast('Email Send Sucessfully')
             router.push("/login")
@@ -29,6 +30,8 @@ export default function forgotpasswordPage() {
                     toast.error('An error occurred. Please try again later.');
                 }
             }
+        }finally{
+            setLoading(false);
         }
 
     };
@@ -42,6 +45,9 @@ export default function forgotpasswordPage() {
     return (
         <>
             <div><Toaster /></div>
+            {loading ? (
+                <Loading />
+            ) : ("")}
             <div className="h-screen w-full flex items-center justify-center">
                 <div className="flex flex-col w-1/3 gap-y-4">
                     <h1 className="text-center text-3xl">Forgot Password</h1>

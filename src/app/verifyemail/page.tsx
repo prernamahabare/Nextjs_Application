@@ -31,23 +31,22 @@ export default function VerifyEmailPage() {
     }, [token]);
 
     return(
-        <div className="flex flex-col items-center justify-center min-h-screen py-2">
+        <div className="flex flex-col gap-y-5 items-center justify-center min-h-screen py-2">
 
             <h1 className="text-4xl">Verify Email</h1>
-            <h2 className="p-2 bg-orange-500 text-black">{token ? `${token}` : "no token"}</h2>
+            <h2 className="p-2 bg-[#fd386e] text-black">{token ? `${token}` : "no token"}</h2>
 
             {verified && (
-                <div>
-                    <h2 className="text-2xl">Email Verified</h2>
-                    <Link href="/login">
-                        Login
+                <div className="flex items-center flex-col gap-y-3">
+                    <h2 className="text-2xl">Email Verified Successfully!</h2>
+                    <Link href="/login" className="underline decoration-sky-500 text-sky-500">
+                        Sign_in
                     </Link>
                 </div>
             )}
             {error && (
                 <div>
-                    <h2 className="text-2xl bg-red-500 text-black">Error</h2>
-                    
+                    <h2 className="text-2xl p-3 bg-red-500 text-black">Oops.. Error Occured!</h2>
                 </div>
             )}
         </div>

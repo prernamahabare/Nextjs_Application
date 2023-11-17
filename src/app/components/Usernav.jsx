@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react'
 import Link from 'next/link'
 import FeatherIcon from "feather-icons-react"
 
-const Usernav = ({user}) => {
+const Usernav = ({ user }) => {
 
     return (
         <>
@@ -18,8 +18,9 @@ const Usernav = ({user}) => {
                     <div>Support</div>
                     <div><FeatherIcon icon="search" /></div>
                     <div className='flex gap-2'>
-                    <div className='gap-0'><Link href={`/profile/${user}`}><FeatherIcon icon="user" /></Link></div>
-                    <div>{user}</div>
+                       <Link className="flex" href={`/profile/${user}`}><FeatherIcon icon="user" />
+                            {user}
+                        </Link>
                     </div>
                 </div>
             </div>
