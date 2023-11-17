@@ -76,7 +76,7 @@ export default function LoginPage() {
                                 }`}>Login</button>
 
                         <h2 className="text-center flex justify-center gap-9">
-                        <Link href="/forgotpassword">Forgot Password?</Link>
+                        <Link href="/forgotpassword">Forgot Password ?</Link>
                             <span className="text-slate-400">|</span>
                             <Link href="/signup">Sign Up</Link>
                         </h2>

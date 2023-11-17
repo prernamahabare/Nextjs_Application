@@ -1,25 +1,17 @@
 import React, { useEffect } from 'react'
-import axios from "axios";
-import toast from 'react-hot-toast';
-import Loading from '../Loading';
+import FeatherIcon from "feather-icons-react"
 
 
-const UserList = ({ users } ) => {
-  const [copiedData, setCopiedData] = React.useState('');
-
-  // const copyData = async () => {
-  //   const response = await axios.get('/api/users/allusers');
-  //   const dataToCopy = response?.data?.data._id;
-  //   // console.log(data._id)
-  //   console.log(dataToCopy)
-  //   navigator.clipboard.writeText(dataToCopy);
-  //   setCopiedData(dataToCopy);
-  // }
-
-  // useEffect(() => {
-  //   getUsers();
-  // }, []);
-  console.log(users.username)
+const UserList = ({ users }) => {
+  const copyData = (value) => {
+    navigator.clipboard.writeText(value)
+      .then(() => {
+        console.log('Value copied to clipboard:', value);
+      })
+      .catch((error) => {
+        console.error('Failed to copy value to clipboard:', error);
+      });
+  };
 
   return (
     <div className="flex p-10 flex-col items-center justify-center">
@@ -44,14 +36,20 @@ const UserList = ({ users } ) => {
                       <td className="whitespace-nowrap px-6 py-4 font-medium">{item.name}</td>
                       <td className="whitespace-nowrap px-6 py-4 font-medium">{item.username}</td>
                       <td className="whitespace-nowrap px-6 py-4">{item.email}</td>
-                      <td className="whitespace-nowrap px-6 py-4 " ><h4 className='bg-gray-400 rounded-full p-2 text-center'>{item.isVerified ? "verified" : "Unverified"}</h4></td>
+                      <td className="whitespace-nowrap px-6 py-4 " ><h4 className='bg-gray-400 rounded-full p-2 text-center'>
+                        {item.isVerified ? "verified" : "Unverified"}</h4></td>
                       <td className="whitespace-nowrap px-6 py-4">
-                        {/* {item._id} */}
-                        <button className="bg-blue-500 text-white p-2"
-                        //  onClick={copyData}
+                        <div className='flex items-center '>
+                          <button className=" group bg-[#252525] rounded-md gap-x-2 text-white p-2 flex items-center relative"
+                            onClick={() => copyData(item._id)}
                           >
-                          Copy id
-                        </button>
+                            <div><FeatherIcon icon="copy" /></div>
+                            <div>Copy id</div>
+                            <span className="opacity-0 group-hover:opacity-100 absolute bottom-full right-0 transform translate-x-1/5 bg-[#252525] text-white px-2 py-1 rounded-md m-1">
+                              Cilck to Copy
+                            </span>
+                          </button>
+                        </div>
                       </td>
                     </tr>
 

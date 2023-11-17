@@ -26,12 +26,13 @@ export default function userprofile({ params }: any) {
             await axios.get("/api/users/logout");
             router.push('/login')
         } catch (error: any) {
-            toast(error.message);
+            toast.error(error.message);
             console.log(error)
         } finally {
             setLoading(false)
         }
     };
+      
     const onUpdate = async () => {
         try {
             setLoading(true)
@@ -60,15 +61,6 @@ export default function userprofile({ params }: any) {
         }
     }
 
-    // useEffect(() => {
-    //     const isValueChanged = user.name !== params.name || user.email !== params.email;
-    //     if (isValueChanged) {
-    //         setButtonDisabled(false);
-    //     } else {
-    //         setButtonDisabled(true);
-    //     }
-    // }, [user.name, user.email, params.name, params.email]);
-
     useEffect(() => {
         getUserDetails();
     }, []);
@@ -79,7 +71,7 @@ export default function userprofile({ params }: any) {
                 <Loading />
             ) : (
                 <>
-                    <div><Toaster /></div>
+                    {/* <div><Toaster /></div> */}
                     <div className="flex flex-col">
                         <div className="flex justify-between bg-[#18181b] py-8 px-10 font-semibold mb-10  border border-[#424248] ">
                             <h1 className="text-2xl">{user?.username}</h1>
