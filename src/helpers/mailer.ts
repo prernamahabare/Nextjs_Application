@@ -18,23 +18,23 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
         }
 
         //  Mail send using Gmail
-        // const transport = nodemailer.createTransport({
-        //     service: "gmail",
-        //     auth: {
-        //         user: process.env.MAILSERVICE_USER,
-        //         pass: process.env.MAILSERVICE_PASS,
-        //     },
-        // });
-
-        //  Mail send using MailTrap
-        var transport = nodemailer.createTransport({
-            host: "sandbox.smtp.mailtrap.io",
-            port: 2525, auth:
-            {
+        const transport = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
                 user: process.env.MAILSERVICE_USER,
                 pass: process.env.MAILSERVICE_PASS,
-            }
+            },
         });
+
+        //  Mail send using MailTrap
+        // var transport = nodemailer.createTransport({
+        //     host: "sandbox.smtp.mailtrap.io",
+        //     port: 2525, auth:
+        //     {
+        //         user: process.env.MAILSERVICE_USER,
+        //         pass: process.env.MAILSERVICE_PASS,
+        //     }
+        // });
 
 
         const mailOptions = {
