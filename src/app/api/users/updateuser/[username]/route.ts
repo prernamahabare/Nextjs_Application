@@ -7,21 +7,13 @@ connect();
 
 export async function PUT(request: NextRequest,{params}:{params:{username:string}}){
     try {
-        // const user = await User.findOne();
-
         const user =  params.username;
-        // console.log(user)
         const currentUser = await User.findOne({username:user});
-
-        // const username =  params.username;
-        // const user = await User.findOne({username});
-
 
         const reqbody = await request.json();
         const {name, username, email} = reqbody;
 
         const userId = await getDataFromToken(request);
-        // const user = await User.findOne({_id: userId });
 
         if (!currentUser) {
             return NextResponse.json({ error: "User does not exist" },

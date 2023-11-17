@@ -8,18 +8,12 @@
   --background-end-rgb: 19 19 21;
 }
 
-/* .custom-button[title]:hover::after {
-  content: attr(title);
-  background-color: red;
- 
-} */
-
-input:-internal-autofill-selected {
+/* input:-internal-autofill-selected {
   appearance: menulist-button;
   background-image: none !important;
   background-color:#000000  !important;
   color: fieldtext !important;
-}
+} */
 
 @media (prefers-color-scheme: dark) {
   :root {

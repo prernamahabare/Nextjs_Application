@@ -1,7 +1,6 @@
 import React, { useEffect, useContext } from 'react'
 import Link from 'next/link'
 import FeatherIcon from "feather-icons-react"
-import axios from "axios";
 
 const Usernav = ({user}) => {
 

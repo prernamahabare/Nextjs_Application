@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import FeatherIcon from "feather-icons-react"
 
-
 const UserList = ({ users }) => {
   const copyData = (value) => {
     navigator.clipboard.writeText(value)

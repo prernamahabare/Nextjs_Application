@@ -96,8 +96,6 @@ export default function SignupPage() {
                         <Link href="/login" className="underline">Sign in</Link>
                     </h2>
                 </div>
-
-
             </div>
         </>
     )

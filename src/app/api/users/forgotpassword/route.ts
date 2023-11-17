@@ -16,7 +16,6 @@ export async function POST(request: NextRequest) {
             email: email
         });
 
-        console.log(email);
         if (!user) {
             return NextResponse.json({ error: "User Not Exits" }, { status: 400 })
         }
