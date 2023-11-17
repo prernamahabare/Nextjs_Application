@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 'use client';
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -9,7 +9,7 @@ export default function resetpasswordpage() {
     const [user, setUser] = React.useState({
         newpassword: "",
         confirmpassword: "",
-        token: window.location.search.split("=")[1],
+        token: "",
     });
 
     const onChangepassword = async () => {
@@ -19,6 +19,10 @@ export default function resetpasswordpage() {
             toast.error(error.message);
         }
     };
+    useEffect(() => {
+        const urlToken = window.location.search.split("=")[1];
+        setUser({...user, token: urlToken || ""});
+    }, []);
 
     return (
         <>
