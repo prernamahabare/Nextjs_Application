@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import FeatherIcon from "feather-icons-react"
 
 const UserList = ({ users }) => {
@@ -13,13 +13,13 @@ const UserList = ({ users }) => {
   };
 
   return (
-    <div className="flex p-10 flex-col items-center justify-center">
-      <div className="overflow-x-auto sm:-mx-6 lg:-mx-8 w-3/4">
-        <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-          <div className="overflow-hidden">
+    <div className="flex flex-col lg:items-center lg:justify-center">
+      <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+          <div class="overflow-hidden">
             {users.length != 0 ? (
-              <table className="min-w-full text-left text-sm font-light table-fixed">
-                <thead className="border-b font-medium dark:border-neutral-500">
+              <table class="min-w-full text-left text-sm font-light">
+                <thead class="border-b font-medium dark:border-neutral-500">
                   <tr>
                     <th scope="col" className="px-6 py-4">NAME</th>
                     <th scope="col" className="px-6 py-4">USERNAME</th>

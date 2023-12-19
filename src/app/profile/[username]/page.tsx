@@ -66,7 +66,7 @@ export default function userprofile({ params }: any) {
     }, []);
     return (
         <>
-            <Usernav user={user.username} />
+            {/* <Usernav user={user.username} /> */}
             {loading ? (
                 <Loading />
             ) : (

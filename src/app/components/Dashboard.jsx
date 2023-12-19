@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 const Dashboard = () => {
     return (
-        <div className='flex text-slate-100 h-screen p-10'>
+        <div className='lg:flex text-slate-100 lg:h-screen p-10'>
             <div className='basis-1/2  m-auto justify-center'>
                 <h1 className='text-6xl'>
                     Build like a team of hundreds

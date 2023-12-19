@@ -5,9 +5,9 @@ import FeatherIcon from "feather-icons-react"
 const Footer = () => {
     return (
         <div className='text-slate-100 p-7'>
-            <div className='flex justify-between mb-20'>
+            <div className='lg:flex justify-between mb-20'>
                 <div className='grow'>Company Name</div>
-                <div className='flex basis-2/3'>
+                <div className='lg:flex basis-2/3'>
                     <div className='flex flex-col basis-1/4'>
                         <h1 className='mb-5'>Quick Start</h1>
                         <h2>Flutter</h2>
@@ -59,7 +59,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className='flex justify-between'>
+            <div className='lg:flex justify-between'>
                 <div className='flex gap-x-3'>
                     <Link href='#'><FeatherIcon icon="alert-circle" /></Link>
                     <Link href='#'><FeatherIcon icon="linkedin" /></Link>

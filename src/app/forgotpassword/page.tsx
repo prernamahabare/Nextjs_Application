@@ -49,7 +49,7 @@ export default function forgotpasswordPage() {
                 <Loading />
             ) : ("")}
             <div className="h-screen w-full flex items-center justify-center">
-                <div className="flex flex-col w-1/3 gap-y-4">
+                <div className="flex flex-col lg:w-1/3 gap-y-4">
                     <h1 className="text-center text-3xl">Forgot Password</h1>
                     <label htmlFor="email" className="text-base">Email Id</label>
                     <input placeholder="Email Id" className="w-full p-3 border border-[#424248] outline-none rounded-md bg-[#18181b] placeholder:text-[#65656a] text-sm hover:bg-gray-900"

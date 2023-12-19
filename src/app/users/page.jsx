@@ -37,9 +37,9 @@ const Users = () => {
     return (
         <>
             <div>
-                <Usernav user={logedInUserInfo}/>
-                {loading ? <Loading /> :
-                    <UserList users={data} />}
+                <Usernav user={logedInUserInfo} />
+                {/* {loading ? <Loading /> :
+                    <UserList users={data} />} */}
             </div>
         </>
     )
